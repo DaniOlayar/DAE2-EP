@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head">
+
+</head>
+<body>
+
+<div class="container">
+  <a th:href="@{/index}"><i class="material-icons">arrow_back</i></a><h4 style="display: inline">Lista de clientes</h4>
+  <div th:switch="clientes">
+    <div th:case="*">
+      <table class="striped highlight centered">
+        <thead class="green lighten-2">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">DNI</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Email</th>
+          <th>Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cliente : ${clientes}">
+          <td th:text="${cliente.cliente_id}"></td>
+          <td th:text="${cliente.cliente_dni}"></td>
+          <td th:text="${cliente.cliente_nombre}"></td>
+          <td th:text="${cliente.cliente_apellidos}"></td>
+          <td th:text="${cliente.cliente_email}"></td>
+          <td class="text-right">
+            <div class="btn-group">
+              <a th:href="@{/clientes/edit/{id} (id=${cliente.cliente_id}) }" class="waves-effect waves-light btn yellow lighten-2" ><i class="material-icons">edit</i></a>
+              <a th:href="@{/clientes/delete/{id} (id=${cliente.cliente_id}) }" class="waves-effect waves-light btn red lighten-2" ><i class="material-icons">delete</i></a>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-12" style="text-align: center; margin-top: 15px">
+    <a th:href="@{/clientes/add}" class="waves-effect waves-light btn green lighten-2" ><i class="material-icons">add</i></a>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

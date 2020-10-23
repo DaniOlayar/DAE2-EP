@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head">
+
+</head>
+<body>
+
+<div class="container">
+  <h3>Agregar Clientes</h3>
+  <div>
+    <form class="col s12" action="#" method="post" th:action="@{/clientes/save}" th:object="${cliente}" >
+      <div class="input-field">
+        <label for="id">Id</label>
+        <input type="number" id="id" th:field="*{cliente_id}" th:readonly="true">
+      </div>
+      <div class="input-field">
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" th:field="*{cliente_dni}" data-length="8">
+      </div>
+      <div class="input-field">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" th:field="*{cliente_nombre}">
+      </div>
+      <div class="input-field">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" th:field="*{cliente_apellidos}">
+      </div>
+      <div class="input-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" th:field="*{cliente_email}">
+      </div>
+      <button type="submit" class="waves-effect waves-light btn green lighten-2"><i class="material-icons">send</i></button>
+      <a th:href="@{/clientes}" class="waves-effect waves-light btn red lighten-2" ><i class="material-icons">cancel</i></a>
+    </form>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
